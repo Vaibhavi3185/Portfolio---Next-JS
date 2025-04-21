@@ -1,4 +1,4 @@
-// src/components/AboutSection.tsx
+// src/components/About.tsx
 "use client";
 import React, { useEffect, useRef } from "react";
 
@@ -7,6 +7,7 @@ const About = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentSectionRef = sectionRef.current; // Save the ref to a local variable
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -21,13 +22,13 @@ const About = () => {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef);
       }
     };
   }, []);

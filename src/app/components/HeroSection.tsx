@@ -1,4 +1,3 @@
-// src/components/HeroSection.tsx
 "use client";
 import React, { useEffect, useState } from 'react';
 
@@ -9,13 +8,13 @@ const HeroSection = () => {
     setIsVisible(true);
   }, []);
 
-  const titles = ['Java Developer', 'Backend Expert', 'API Architect'];
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   useEffect(() => {
+    const titles = ['Java Developer', 'Backend Expert', 'API Architect'];  // Titles inside useEffect
     const current = titles[titleIndex];
     
     if (isDeleting) {
@@ -42,7 +41,7 @@ const HeroSection = () => {
         return () => clearTimeout(timeout);
       }
     }
-  }, [displayText, isDeleting, titleIndex, titles, typingSpeed]);
+  }, [displayText, isDeleting, titleIndex, typingSpeed]);  // titles now inside useEffect
 
   return (
     <section id="home" className="relative min-h-screen flex items-center">
@@ -60,7 +59,7 @@ const HeroSection = () => {
               Gayatri Rana
             </h1>
             <h2 className="text-2xl md:text-4xl font-display font-medium mb-6 h-10">
-              <span className="text-accent-300">I'm a </span>
+              <span className="text-accent-300">I&apos;m a </span> {/* Changed ' to &apos; */}
               <span className="relative">
                 {displayText}
                 <span className="absolute right-[-4px] top-0 h-full w-[2px] bg-white animate-blink"></span>
